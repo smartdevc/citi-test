@@ -22,7 +22,7 @@ public class TransactionService {
     }
 
     public Transaction createTransaction(Double amount) {
-        //retrieve the lastest tax for the transaction
+        //retrieve the latest tax for the transaction
         Optional<Tax> latestTax = taxRepository.findAll().stream().reduce((first, second) -> second);
         double taxAmount = latestTax.map(tax -> amount * tax.getRate()).orElse(0.0);
 
